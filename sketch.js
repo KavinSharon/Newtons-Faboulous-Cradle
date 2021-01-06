@@ -15,17 +15,17 @@ function preload()
 
 function setup() {
 	createCanvas(800, 700);
-    bobDiameter = 20;
+    bobDiameter = 40;
 
 	engine = Engine.create();
 	world = engine.world;
 
 	//Create the Bodies Here.
-     bobObject1 = new Bob(380,300,10);
-	 bobObject2 = new Bob(390,300,10);
-	 bobObject3 = new Bob(400,300,10);
-	 bobObject4 = new Bob(410,300,10);
-	 bobObject5 = new Bob(420,300,10);
+     bobObject1 = new Bob(360,300,bobDiameter);
+	 bobObject2 = new Bob(380,300,bobDiameter);
+	 bobObject3 = new Bob(400,300,bobDiameter);
+	 bobObject4 = new Bob(420,300,bobDiameter);
+	 bobObject5 = new Bob(440,300,bobDiameter);
 	 roof = new Roof(400,100,200,20);
 	 rope1 = new rope(bobObject1.body,roof.body,-bobDiameter*2,0);
 	 rope2 = new rope(bobObject2.body,roof.body,-bobDiameter*1,0);
@@ -51,7 +51,12 @@ function draw() {
 	rope3.display();
 	rope4.display();
 	rope5.display();
-}
 
+}
+function keyPressed(){
+	if(keyCode === UP_ARROW){
+		Matter.Body.applyForce(bobObject1.body,bobObject1.body.position,{x:-50,y:-50})
+	}
+}
 
 
